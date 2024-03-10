@@ -1,13 +1,15 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Home";
-// import Navabar from "./components/Navbar";
+import Images from "./Images";
+import Navabar from "./components/Navbar";
 const App = () => {
   return (
     <>
       <Router>
-        {/* <Navabar /> */}
+        <Navabar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/images" element={<Images />} />
         </Routes>
       </Router>
     </>

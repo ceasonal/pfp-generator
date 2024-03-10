@@ -4,57 +4,32 @@ import View from "./components/View";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import DownloadIcon from "@mui/icons-material/Download";
 import { IconButton } from "@mui/material";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
-import ShuffleIcon from "@mui/icons-material/Shuffle";
 
 function YourComponent() {
   const [animeData, setAnimeData] = useState([]);
   const [initialLoad, setInitialLoad] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  const optionsGif = {
+  const options = {
     method: "GET",
-    url: "https://any-anime.p.rapidapi.com/v1/anime/gif/10",
+    url: "https://pinscrape.p.rapidapi.com/api/kurizutaz/sketches/pins",
     headers: {
       "X-RapidAPI-Key": import.meta.env.VITE_RAPIDAPI_KEY,
-      "X-RapidAPI-Host": import.meta.env.VITE_RAPIDAPI_HOST,
-    },
-  };
-
-  const optionsPng = {
-    method: "GET",
-    url: "https://any-anime.p.rapidapi.com/v1/anime/png/10",
-    headers: {
-      "X-RapidAPI-Key": import.meta.env.VITE_RAPIDAPI_KEY,
-      "X-RapidAPI-Host": import.meta.env.VITE_RAPIDAPI_HOST,
+      "X-RapidAPI-Host": import.meta.env.VITE_RAPIDAPI_HOST_PINSCRAPE,
     },
   };
 
   const fetchData = async () => {
-    setIsLoading(true); // Set loading to true before fetching
+    setIsLoading(true);
     try {
-      const [gifResponse, pngResponse] = await Promise.all([
-        axios.request(optionsGif),
-        axios.request(optionsPng),
-      ]);
-
-      console.log("GIF Response:", gifResponse.data);
-      console.log("PNG Response:", pngResponse.data);
-
-      const gifData = gifResponse.data.images;
-      const pngData = pngResponse.data.images;
-
-      const combinedData = [...gifData, ...pngData];
-
-      // console.log("Combined Data:", combinedData);
-
-      setAnimeData(combinedData);
+      const response = await axios.request(options);
+      // console.log(response.data.images);
+      setAnimeData(response.data.images);
       setIsLoading(false);
-      console.log("Anime Data:", animeData);
     } catch (error) {
       console.error(error);
       setIsLoading(true);
@@ -70,27 +45,6 @@ function YourComponent() {
 
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginTop: 40,
-        }}
-      >
-        <Button
-          onClick={fetchData}
-          variant="contained"
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            textAlign: "center",
-          }}
-        >
-          Get 20 Random Anime PFP's &nbsp;
-          <ShuffleIcon />
-        </Button>
-      </div>
       {isLoading ? (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <img
@@ -102,14 +56,14 @@ function YourComponent() {
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 10, sm: 16, md: 30 }}
+          columns={{ xs: 4, sm: 10, md: 20 }}
           justifyContent="center"
         >
           {animeData.map((animeItem, index) => (
-            <Grid item xs={3} sm={4} md={4} key={index}>
+            <Grid item xs={2} sm={3} md={4} key={index}>
               <Card
                 sx={{
-                  maxWidth: 100,
+                  maxWidth: 200,
                   margin: "auto",
                   marginTop: 5,
                   boxShadow: 3,
@@ -118,10 +72,10 @@ function YourComponent() {
               >
                 <CardMedia
                   sx={{
-                    height: 100,
-                    width: 100,
+                    height: 200,
+                    width: 200,
                   }}
-                  image={animeItem}
+                  image={animeItem.src}
                   title={`Anime Image ${index}`}
                 >
                   <Box
@@ -131,13 +85,13 @@ function YourComponent() {
                       alignItems: "center",
                     }}
                   >
-                    <Link href={animeItem} target="_blank" rel="noreferrer">
+                    <Link href={animeItem.src} target="_blank" rel="noreferrer">
                       <IconButton sx={{ color: "#b420fd" }}>
                         <DownloadIcon />
                       </IconButton>
                     </Link>
                     <IconButton sx={{ color: "#b420fd" }}>
-                      <View image={animeItem} />
+                      <View image={animeItem.src} />
                     </IconButton>
                   </Box>
                 </CardMedia>
