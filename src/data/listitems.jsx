@@ -3,38 +3,38 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import TagIcon from '@mui/icons-material/Tag';
 import { Link } from 'react-router-dom';
 
 export const mainListItems = (
   <React.Fragment>
     <ListItemButton component={Link} to="/" >
       <ListItemIcon sx={{color: '#70737C'}}>
-        <AssignmentIcon/>
+        <TagIcon/>
       </ListItemIcon>
       <ListItemText primary="Home"  />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon sx={{color: '#70737C'}}>
-      <AssignmentIcon/>
+      <TagIcon/>
       </ListItemIcon>
       <ListItemText primary="Random" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon sx={{color: '#70737C'}}>
-      <AssignmentIcon/>
+      <TagIcon/>
       </ListItemIcon>
       <ListItemText primary="Random Image" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon sx={{color: '#70737C'}}>
-      <AssignmentIcon/>
+      <TagIcon/>
       </ListItemIcon>
       <ListItemText primary="Randomg Gif" />
     </ListItemButton>
     <ListItemButton component={Link} to="/pintrest">
       <ListItemIcon sx={{color: '#70737C'}}>
-      <AssignmentIcon/>
+      <TagIcon/>
       </ListItemIcon>
       <ListItemText primary="Pintrest" />
     </ListItemButton>
