@@ -20,7 +20,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Random" />
     </ListItemButton>
-    <ListItemButton>
+    {/* <ListItemButton>
       <ListItemIcon sx={{color: '#70737C'}}>
       <TagIcon/>
       </ListItemIcon>
@@ -31,7 +31,7 @@ export const mainListItems = (
       <TagIcon/>
       </ListItemIcon>
       <ListItemText primary="Randomg Gif" />
-    </ListItemButton>
+    </ListItemButton> */}
     <ListItemButton component={Link} to="/pintrest">
       <ListItemIcon sx={{color: '#70737C'}}>
       <TagIcon/>
