@@ -1,6 +1,6 @@
 import { HashRouter as Router, Routes, Route, Outlet } from "react-router-dom";
 import Random from "./Pages/Random";
-import Images from "./Pages/Images";
+import Images from "./Pages/Pintrest";
 import Navabar from "./components/Navbar";
 import Main from "./Pages/Main";
 import { Analytics } from "@vercel/analytics/react";

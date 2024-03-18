@@ -96,7 +96,7 @@ function YourComponent() {
           <Box
             sx={{
               backgroundColor: "#2B2D31",
-              borderLeft: "2px solid pink" ,
+              borderLeft: "4px solid pink" ,
               borderRadius: { xs: 0, md: "5px 0px 0px 5px" },
               paddingLeft: { xs: "5px", md: "10px" },
               paddingRight: { xs: "5px", md: "10px" },
@@ -112,6 +112,7 @@ function YourComponent() {
               justifyContent="center"
               paddingRight={2}
               paddingLeft={2}
+              marginBottom={3}
             >
               {animeData.map((animeItem, index) => (
             <Grid item xs={5} sm={4} md={4} key={index}>
@@ -142,7 +143,20 @@ function YourComponent() {
                 </Grid>
               ))}
             </Grid>
-            <div style={{ textAlign: "center", marginTop: 20 }}>
+          </Box>
+          <Box
+            sx={{
+              backgroundColor: "#2B2D31",
+              borderLeft: "4px solid pink" ,
+              borderRadius: { xs: 0, md: "5px 0px 0px 5px" },
+              paddingLeft: { xs: "5px", md: "10px" },
+              paddingRight: { xs: "5px", md: "10px" },
+              marginLeft: "60px",
+              marginRight: "5px",
+              marginTop: '10px'
+            }}
+          >
+            <div>
               <Button
                 onClick={fetchData}
                 variant="contained"
