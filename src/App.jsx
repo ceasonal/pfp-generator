@@ -1,17 +1,22 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./Home";
-import Images from "./Images";
+import { HashRouter as Router, Routes, Route, Outlet } from "react-router-dom";
+import Random from "./Pages/Random";
+import Images from "./Pages/Images";
 import Navabar from "./components/Navbar";
-import { Analytics } from "@vercel/analytics/react"
+import Main from "./Pages/Main";
+import { Analytics } from "@vercel/analytics/react";
 const App = () => {
   return (
     <>
       <Router>
-        <Analytics/>
-        <Navabar />
+        <Analytics />
+        {/* <Navabar /> */}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/images" element={<Images />} />
+          <Route path="/" element={<Main />}>
+            <Route path="" element={<Random />}>
+              <Route path="" element={<Outlet />} />
+            </Route>
+            <Route path="/pintrest" element={<Images />} />
+          </Route>
         </Routes>
       </Router>
     </>

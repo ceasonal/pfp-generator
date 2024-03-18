@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import View from "./components/View";
+import View from "../components/View";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
@@ -46,12 +46,13 @@ function YourComponent() {
   return (
     <div>
       {isLoading ? (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <img
-            src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjVmd3V1eGg5am5qNGJiMTlkaTA5NXR6bWY3ZDJsdjV1YnltbHFtbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ibWGYUw1hF4Q8gMOhi/giphy.gif"
-            alt="loading"
-          />
-        </div>
+       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+       <img
+         src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjVmd3V1eGg5am5qNGJiMTlkaTA5NXR6bWY3ZDJsdjV1YnltbHFtbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ibWGYUw1hF4Q8gMOhi/giphy.gif"
+         alt="loading"
+         style={{ margin: "auto" }}
+       />
+     </div>
       ) : (
         <Grid
           container
